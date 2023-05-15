@@ -1,0 +1,144 @@
+mysql> use soulesports;
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_soulesports |
++-----------------------+
+| bhanu                 |
+| matches               |
+| player                |
+| player_stats          |
+| player_team           |
+| player_teams          |
+| players               |
+| rahul                 |
+| ram                   |
+| sponsorships          |
+| streaming             |
+| team_name             |
+| teams                 |
+| teams1                |
+| tournaments           |
++-----------------------+
+15 rows in set (0.00 sec)
+
+mysql> desc matches;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| match_id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| match_date     | date         | NO   |     | NULL    |                |
+| match_location | varchar(255) | YES  |     | NULL    |                |
+| team1_id       | int(11)      | NO   | MUL | NULL    |                |
+| team2_id       | int(11)      | NO   | MUL | NULL    |                |
+| team1_score    | int(11)      | YES  |     | NULL    |                |
+| team2_score    | int(11)      | YES  |     | NULL    |                |
+| tournament_id  | int(11)      | YES  | MUL | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.01 sec)
+
+mysql> descplayer;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'descplayer' at line 1
+mysql> desc player;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | int(20)     | YES  |     | NULL    |       |
+| team   | varchar(20) | YES  |     | NULL    |       |
+| age    | varchar(10) | YES  |     | NULL    |       |
+| salary | int(20)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> desc player_statsl;l
+ERROR 1146 (42S02): Table 'soulesports.player_statsl' doesn't exist
+    -> desc player_stats;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'l
+desc player_stats' at line 1
+mysql> desc player_stats;
++-----------+---------+------+-----+---------+-------+
+| Field     | Type    | Null | Key | Default | Extra |
++-----------+---------+------+-----+---------+-------+
+| player_id | int(11) | NO   | PRI | 0       |       |
+| match_id  | int(11) | NO   | PRI | 0       |       |
+| kills     | int(11) | YES  |     | NULL    |       |
+| deaths    | int(11) | YES  |     | NULL    |       |
+| assists   | int(11) | YES  |     | NULL    |       |
++-----------+---------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> desc player_team;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| soul   | int(20)     | YES  |     | NULL    |       |
+| godl   | varchar(10) | YES  |     | NULL    |       |
+| xspark | varchar(20) | YES  |     | NULL    |       |
+| insane | int(20)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> desc  player_teams;
++------------+---------+------+-----+---------+-------+
+| Field      | Type    | Null | Key | Default | Extra |
++------------+---------+------+-----+---------+-------+
+| player_id  | int(11) | NO   | PRI | 0       |       |
+| team_id    | int(11) | NO   | PRI | 0       |       |
+| start_date | date    | YES  |     | NULL    |       |
+| end_date   | date    | YES  |     | NULL    |       |
++------------+---------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> desc teams;
++--------------------+--------------+------+-----+---------+----------------+
+| Field              | Type         | Null | Key | Default | Extra          |
++--------------------+--------------+------+-----+---------+----------------+
+| team_id            | int(11)      | NO   | PRI | NULL    | auto_increment |
+| team_name          | varchar(255) | NO   | MUL | NULL    |                |
+| team_region        | varchar(255) | YES  |     | NULL    |                |
+| team_coach         | varchar(255) | YES  |     | NULL    |                |
+| team_manager       | varchar(255) | YES  |     | NULL    |                |
+| team_logo_url      | varchar(255) | YES  |     | NULL    |                |
+| team_founding_date | date         | YES  |     | NULL    |                |
+| Playertype         | int(225)     | YES  |     | NULL    |                |
+| Playerfavweapon    | varchar(20)  | YES  |     | NULL    |                |
++--------------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.01 sec)
+
+mysql> desc sponsorships;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| sponsorship_id   | int(11)      | NO   | PRI | NULL    | auto_increment |
+| sponsor_name     | varchar(255) | NO   |     | NULL    |                |
+| sponsor_type     | varchar(255) | YES  |     | NULL    |                |
+| sponsor_logo_url | varchar(255) | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> desc  streaming;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| stream_id     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| stream_title  | varchar(255) | YES  |     | NULL    |                |
+| stream_url    | varchar(255) | YES  |     | NULL    |                |
+| stream_date   | datetime     | YES  |     | NULL    |                |
+| tournament_id | int(11)      | YES  | MUL | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> desc  tournaments;
++------------------------+--------------+------+-----+---------+----------------+
+| Field                  | Type         | Null | Key | Default | Extra          |
++------------------------+--------------+------+-----+---------+----------------+
+| tournament_id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+| tournament_name        | varchar(255) | NO   |     | NULL    |                |
+| tournament_start_date  | date         | YES  |     | NULL    |                |
+| tournament_end_date    | date         | YES  |     | NULL    |                |
+| tournament_location    | varchar(255) | YES  |     | NULL    |                |
+| tournament_prize_money | int(11)      | YES  |     | NULL    |                |
++------------------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.01 sec)
+
+mysql>
